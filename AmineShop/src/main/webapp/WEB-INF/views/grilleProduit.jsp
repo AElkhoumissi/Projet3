@@ -93,7 +93,6 @@
 					</p>
 				</div>
 			</div>
-			
 			<div class="w3-third w3-container w3-margin-bottom">
 				<img src="<c:url value="/resource/images/produits/1.jpg"/>" alt="Norway" style="width: 100%" class="w3-hover-opacity">
 				<div class="w3-container w3-white">
@@ -123,8 +122,7 @@
 							<li>Système Exploitation - Android OS, v8.1(Lollipop)</li>
 							<li>Prix - 10,000.00 DH</li>
 						</ul>
-					</p>
-					
+					</p>	
 				</div>
 			</div>
 		</div>
