@@ -1,0 +1,48 @@
+
+  .bg-1 {
+      background-color: #5bc0de; 
+      color: #211935;
+      padding:100px;
+     
+  }
+  .bg-1 h3 {
+  	font-family:serif;
+  	font-style: normal;
+  	font-size: 25px;
+  	font-weight: bold;
+  	padding:5px;
+  	
+  }
+  .bg-1 p {
+  	font-family:serif;
+  	font-style: normal;
+  	font-size: 16px;
+  	font-weight: normal;
+  	text-align: justify;
+  	padding:5px;
+  	
+  }
+  .bg-1 img{
+  	padding:20px;
+  }
+  .bg-2 {
+      background-color:#e9e9e9;
+      margin-top:0px;
+      
+  }
+  .bg-2 div p {
+  	font-family:Times new Roman;
+  	font-style: italic;
+  	font-size: 20px;
+  	
+  }
+  .bg-2 h3 {
+  	font-family:Times new Roman;
+  	font-style: italic;
+  	font-size: 25px;
+  	font-weight: bold;
+  	margin-top:200px;
+  }
+  
+
+

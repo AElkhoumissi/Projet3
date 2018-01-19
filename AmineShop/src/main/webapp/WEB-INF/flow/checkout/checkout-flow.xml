@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow 
+      http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <var name="commande" class="amine.elkhoumissi.ecommerce.entities.Commande" />
+   
+    
+    <action-state id="ajouterPanierACommande">
+        <evaluate expression="panierDaoImpl.valider(requestParameters.idPanier)"  result="commande.panier" />
+        <transition to="panierInvalidAvertissement" on-exception="java.io.IOException" />
+        <transition to="collecterInfosClient" />
+    </action-state>
+ 
+    <view-state id="collecterInfosClient" view="collecterInfosClient.jsp" model="commande">
+        <transition on="customerInfoCollected" to="collecterLivraisonDetails" />
+    </view-state>
+
+    <view-state id="collecterLivraisonDetails" view="collecterLivraisonDetails.jsp" model="commande">
+        <transition on="shippingDetailCollected" to="confirmationCommande" />
+        <transition on="backToCollectCustomerInfo" to="collecterInfosClient" />
+    </view-state>
+
+     <view-state id="confirmationCommande"> 
+         <transition on="orderConfirmed" to="processOrder" /> 
+         <transition on="backToCollectShippingDetail" to="collecterLivraisonDetails" /> 
+     </view-state> 
+
+    <action-state id="processOrder">
+        <evaluate expression="ligneCommandeDaoImpl.supprimerTous(commande.panier)" />
+        <transition to="remercierClient" />
+    </action-state>
+
+
+    <view-state id="remercierClient" model="commande">
+        <transition to="endState" />
+    </view-state>
+
+    <end-state id="endState" />
+
+    <view-state id="panierInvalidAvertissement">
+        <transition to="endState" />
+    </view-state>
+
+    <end-state id="annulerVerification" view="verificationAnnulee.jsp" />
+
+    <global-transitions>
+        <transition on="cancel" to="annulerVerification" />
+    </global-transitions>
+
+</flow>
